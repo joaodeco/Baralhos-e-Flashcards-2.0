@@ -1,47 +1,53 @@
 const express = require ('express');
-const app = express;
+const app = express();
 const porta = 3000;
+
 app.use(express.json());
 
-app.length('/', (req, res ) => {
+app.get('/', (req, res) => {
     res.send('O servidor Express está funcionando !');
-});
-
-app.listen(porta, ()=>{
-    console.log(`O servidor está rodando em http://localhost:${porta}`);
 });
 
 //Baralhos
 
 const criarBaralho = require ('./baralhos/criarBaralho')
-app.get('/baralhos', criarBaralho)
+app.post('/baralhos', criarBaralho)
 
 const listarBaralhos = require ('./baralhos/listarBaralhos')
 app.get('/baralhos', listarBaralhos)
 
 const atualizarBaralho = require ('./baralhos/atualizarBaralho')
-app.get('/baralhos', atualizarBaralho)
+app.put('/baralhos/:id', atualizarBaralho)
 
 const deletarBaralho = require ('./baralhos/deletarBaralho')
-app.get('/baralhos', deletarBaralho)
+app.delete('/baralhos/:id', deletarBaralho)
 
 //Flashcards
 
-const criarFlashcard = require ('./flashcards/criarFlashcard')
-app.get('/flashcards', criarFlashcard)
+// const criarFlashcard = require ('./flashcards/criarFlashcard')
+// app.('/flashcards', criarFlashcard)
 
-const deletarFlashcard = require ('./flashcards/deletarFlashcard')
-app.get('/flashcards', deletarFlashcard)
+// const deletarFlashcard = require ('./flashcards/deletarFlashcard')
+// app.('/flashcards', deletarFlashcard)
 
-const editarFlashcard = require ('./flashcards/editarFlashcards')
-app.get('/flashcards', editarFlashcard)
+// const editarFlashcard = require ('./flashcards/editarFlashcards')
+// app.('/flashcards', editarFlashcard)
 
-const listarFlashcards = require ('./flashcards/listarFlashcard')
-app.get('/flashcards', listarFlashcards)
+// const listarFlashcards = require ('./flashcards/listarFlashcard')
+// app.('/flashcards', listarFlashcards)
 
-const listarFlashcardsPorBaralho = require ('./flashcards/listarFlashcardPorBaralho')
-app.get('/flashcards', listarFlashcardsPorBaralho)
+// const listarFlashcardsPorBaralho = require ('./flashcards/listarFlashcardPorBaralho')
+// app.('/flashcards', listarFlashcardsPorBaralho)
 
-const listarFlashcardPorPergunta = require ('./flashcards/listarFlashcardPorPergunta')
-app.get('/flashcards', listarFlashcardPorPergunta)
+// const listarFlashcardPorPergunta = require ('./flashcards/listarFlashcardPorPergunta')
+// app.('/flashcards', listarFlashcardPorPergunta)
+
+app.listen(porta, ()=>{
+    console.log(`O servidor está rodando em http://localhost:${porta}`);
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).send('Algo deu errado')
+})
 

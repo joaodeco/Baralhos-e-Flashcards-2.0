@@ -1,6 +1,6 @@
 const { baralhos } = require ('../data');
 
-const listarbaralhos = (req, res) => {
+const listarBaralhos = (req, res) => {
     res.status(200).send(baralhos);
 };
 
