@@ -10,11 +10,11 @@ const deletarBaralho = (req, res) => {
 
     const baralhoDeletado = baralhos.splice(index, 1)[0]
 
-    //flashcards.forEach(flashcards, index => {
-    //    if (flashcards.baralhoId = id) {
-    //        flashcards.splice (index, 1)
-    //    }
-    //})
+    flashcards.forEach(flashcards, index => {
+      if (flashcards.baralhoId = id) {
+           flashcards.splice (index, 1)
+      }
+    })
 
     res.status(200).send({
         menssagen: 'Baralho deletado com sucesso',

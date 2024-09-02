@@ -33,8 +33,8 @@ app.post('/flashcards', criarFlashcard)
 // const editarFlashcard = require ('./flashcards/editarFlashcards')
 // app.('/flashcards', editarFlashcard)
 
-// const listarFlashcards = require ('./flashcards/listarFlashcard')
-// app.('/flashcards', listarFlashcards)
+const listarFlashcards = require ('./flashcards/listarFlashcard')
+app. get('/flashcards', listarFlashcards)
 
 // const listarFlashcardsPorBaralho = require ('./flashcards/listarFlashcardPorBaralho')
 // app.('/flashcards', listarFlashcardsPorBaralho)
