@@ -24,8 +24,8 @@ app.delete('/baralhos/:id', deletarBaralho)
 
 //Flashcards
 
-// const criarFlashcard = require ('./flashcards/criarFlashcard')
-// app.('/flashcards', criarFlashcard)
+ const criarFlashcard = require ('./flashcards/criarFlashcard')
+app.post('/flashcards', criarFlashcard)
 
 // const deletarFlashcard = require ('./flashcards/deletarFlashcard')
 // app.('/flashcards', deletarFlashcard)
